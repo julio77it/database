@@ -19,7 +19,7 @@ const (
 
 func main() {
 	// create new data database
-	db, err := sql.Open(driver, "sql_test.db")
+	db, err := sql.Open(driver, "columns/sql_test.db")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)

@@ -1,12 +1,10 @@
-package columns_test
+package columns
 
 import (
 	"database/sql"
 	"fmt"
 	"os"
 	"testing"
-
-	"github.com/julio77it/database/columns"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -37,14 +35,14 @@ func TestNew(t *testing.T) {
 	}
 
 	// OK
-	_, err = columns.New(rows)
+	_, err = New(rows)
 	if err != nil {
 		t.Errorf("New failed : %v", err)
 	}
 	rows.Close()
 
 	// KO
-	_, err = columns.New(rows)
+	_, err = New(rows)
 	if err == nil {
 		t.Errorf("New error expected, got %v", err)
 	}
@@ -70,7 +68,7 @@ func TestLength(t *testing.T) {
 	}
 	defer rows.Close()
 	// OK
-	rh, err := columns.New(rows)
+	rh, err := New(rows)
 	if err != nil {
 		t.Errorf("New failed : %v", err)
 	}
@@ -98,7 +96,7 @@ func TestNext(t *testing.T) {
 	if err != nil {
 		t.Errorf("db.Query failed : got %v", err)
 	}
-	rh, err := columns.New(rows)
+	rh, err := New(rows)
 	if err != nil {
 		t.Errorf("New failed : got %v", err)
 	}
@@ -131,7 +129,7 @@ func TestGetFieldByIndex(t *testing.T) {
 		t.Errorf("db.Query failed : got %v", err)
 	}
 	defer rows.Close()
-	rh, err := columns.New(rows)
+	rh, err := New(rows)
 	if err != nil {
 		t.Errorf("New failed : got %v", err)
 	}
@@ -180,7 +178,7 @@ func TestGetFieldByName(t *testing.T) {
 		t.Errorf("db.Query failed : got %v", err)
 	}
 	defer rows.Close()
-	rh, err := columns.New(rows)
+	rh, err := New(rows)
 	if err != nil {
 		t.Errorf("New failed : got %v", err)
 	}
@@ -247,7 +245,7 @@ func BenchmarkRowsWithColumnsGetByIndex(b *testing.B) {
 		if err != nil {
 			b.Errorf("db.Query failed : got %v", err)
 		}
-		rh, err := columns.New(rows)
+		rh, err := New(rows)
 		if err != nil {
 			b.Errorf("New failed : got %v", err)
 		}
@@ -281,7 +279,7 @@ func BenchmarkRowsWithColumnsGetByName(b *testing.B) {
 		if err != nil {
 			b.Errorf("db.Query failed : got %v", err)
 		}
-		rh, err := columns.New(rows)
+		rh, err := New(rows)
 		if err != nil {
 			b.Errorf("New failed : got %v", err)
 		}
@@ -315,7 +313,7 @@ func BenchmarkRowsWithColumnsGetAllByIndex(b *testing.B) {
 		if err != nil {
 			b.Errorf("db.Query failed : got %v", err)
 		}
-		rh, err := columns.New(rows)
+		rh, err := New(rows)
 		if err != nil {
 			b.Errorf("New failed : got %v", err)
 		}
@@ -344,7 +342,7 @@ func ExampleRowsWithColumns() {
 	}
 	defer rows.Close()
 	// promote sql.Rows in columns.RowsWithColumns
-	rh, err := columns.New(rows)
+	rh, err := New(rows)
 	if err != nil {
 		fmt.Println(err)
 		return

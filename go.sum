@@ -1,0 +1,4 @@
+github.com/julio77it/database/columns v0.0.0-20210919223326-acd546b145b5 h1:DPHp4SR8C5uQKTv7iNt0sqgGs83twJ+8COdDkTB9Wn0=
+github.com/julio77it/database/columns v0.0.0-20210919223326-acd546b145b5/go.mod h1:llL0RF3y+QQOktvD8pdd2oelCqSbCDx2OyMFhkmqDWM=
+github.com/mattn/go-sqlite3 v1.14.8 h1:gDp86IdQsN/xWjIEmr9MF6o9mpksUgh0fu+9ByFxzIU=
+github.com/mattn/go-sqlite3 v1.14.8/go.mod h1:NyWgC/yNuGj7Q9rpYnZvas74GogHl5/Z4A/KQRfk6bU=
